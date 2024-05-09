@@ -48,8 +48,12 @@ export class CoreService {
 			Session.removeToken();
 			this.router.navigate(["/login"]);
 		}
-		if (error.status == HttpStatusCode.Status400BadRequest || error.status == HttpStatusCode.Status403Forbidden){
-			this.toastr.error(error.error, "Oops!")
+		if (error.status == HttpStatusCode.Status400BadRequest){
+			this.toastr.error("The user or password is incorrect, try again", "Oops!")
+		}
+
+		if (error.status == HttpStatusCode.Status403Forbidden){
+			this.toastr.error("Access to this resource is denied", "Error")
 		}
 
 		if (error.status == HttpStatusCode.Status500InternalServerError || error.status == 0){
