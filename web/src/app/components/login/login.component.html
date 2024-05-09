@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row justify-content-center align-items-center vh-100 py-5">
+		<div class="col-sm-10 col-md-8 col-lg-7 col-xl-6 col-xxl-5">
+			<div class="card card-body text-center p-4 p-sm-5">
+				<h1 class="mb-2">Iniciar Sesion</h1>
+				<form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-sm-4">
+					<div class="mb-3 input-group-lg">
+						<input type="email" class="form-control" placeholder="Ingresa tu email" formControlName="email"
+							[ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+						<div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+							<div *ngIf="f['email'].errors['required']">El email es requerido</div>
+							<div *ngIf="f['email'].errors['email']">El email es inválido</div>
+						</div>
+					</div>
+					<div class="mb-3 position-relative">
+						<div class="input-group input-group-lg">
+							<input class="form-control fakepassword" type="password" id="psw-input"
+								placeholder="Ingresa tu contraseña" formControlName="password"
+								[ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+							<div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+								<div *ngIf="f['password'].errors['required']">La contraseña es requerida</div>
+							</div>
+						</div>
+					</div>
+					<div class="d-grid">
+						<button type="submit" class="btn btn-lg btn-primary">
+							Iniciar Sesion
+						</button>
+						<hr>
+					</div>
+					<p class="mb-0 mt-3">©2024 <a target="_blank">Marcos Buydid.</a>All rights reserved</p>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
